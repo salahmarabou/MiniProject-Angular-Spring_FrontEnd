@@ -1,0 +1,38 @@
+<div class="mt-5">
+    <div class="container-fluid py-4">
+        <form>
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="nomDepart">Nom de Département</label>
+                            <input type="text" class="form-control" id="nomDepart" name="nomDepart">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="etat">État</label>
+                            <input type="text" class="form-control" id="etat" name="etat">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="universite">Choose a University:</label>
+                            <select class="form-control" id="universite" [(ngModel)]="selectedUniversite">
+                                <option *ngFor="let universite of Universites" [ngValue]="universite">
+                                    {{ universite.nomUniversite }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button (click)="ajouterFoyer()" class="btn btn-primary">Ajouter</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

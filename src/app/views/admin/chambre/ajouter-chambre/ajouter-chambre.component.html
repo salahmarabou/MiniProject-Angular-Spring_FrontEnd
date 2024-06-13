@@ -1,0 +1,58 @@
+<div class="mt-5">
+  <div class="container-fluid py-4">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <form (ngSubmit)="saveChambre()" #chambreForm="ngForm" class="border p-4">
+          <div class="form-group">
+            <label for="numeroChambre">Numéro Chambre:</label>
+            <input type="text" class="form-control" id="numeroChambre" name="numeroChambre" [(ngModel)]="chambre.numeroChambre"
+                   required [pattern]="numericPattern">
+            <div *ngIf="chambreForm.controls['numeroChambre'].invalid && (chambreForm.controls['numeroChambre'].dirty || chambreForm.controls['numeroChambre'].touched)"
+                class="text-danger">
+                <div *ngIf="chambreForm.controls['numeroChambre'].errors?.['required']">Le numéro de chambre est obligatoire.</div>
+                <div *ngIf="chambreForm.controls['numeroChambre'].errors?.['pattern']">Le numéro de chambre doit être un nombre.</div>
+
+                <!-- Ajouter des conditions pour d'autres validations -->
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="typeChambre">Type Chambre:</label>
+            <select class="form-control" id="typeChambre" name="typeChambre" [(ngModel)]="chambre.typeChambre" required>
+              <option value="DOUBLE">DOUBLE</option>
+              <option value="SIMPLE">SIMPLE</option>
+              <option value="TRIPLE">TRIPLE</option>
+            </select>
+            <div *ngIf="chambreForm.controls['typeChambre'].invalid && (chambreForm.controls['typeChambre'].dirty || chambreForm.controls['typeChambre'].touched)"
+                class="text-danger">
+                <div *ngIf="chambreForm.controls['typeChambre'].errors?.['required']">Le type de chambre est obligatoire.</div>
+                <!-- Ajouter des conditions pour d'autres validations -->
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="bloc_id_bloc"> Bloc:</label>
+            <select class="form-control" id="bloc_id_bloc" name="bloc_id_bloc" [(ngModel)]="selectedBloc" required>
+            <option *ngFor="let blc of blocs" [ngValue]="blc">
+              {{ blc.nomBloc }}
+            </option>
+          </select>
+            <div *ngIf="chambreForm.controls['bloc_id_bloc'].invalid && (chambreForm.controls['bloc_id_bloc'].dirty || chambreForm.controls['bloc_id_bloc'].touched)"
+                class="text-danger">
+                <div *ngIf="chambreForm.controls['bloc_id_bloc'].errors?.['required']">L'ID du bloc est obligatoire.</div>
+                <!-- Ajouter des conditions pour d'autres validations -->
+            </div>
+            
+          </div>
+
+          <!-- Ajouter d'autres champs de formulaire au besoin -->
+
+          <button type="submit" class="btn btn-primary" [disabled]="!chambreForm.valid">Ajouter</button>
+          <div style="margin-top: 10px;"></div>
+
+<button type="button" class="btn btn-danger" [routerLink]="['/admin/chambre']">Annuler</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

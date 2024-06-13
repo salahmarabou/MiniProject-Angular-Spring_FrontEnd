@@ -1,0 +1,84 @@
+<div class="mt-5">
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+           
+
+            <!-- Add Chambre button -->
+            <button class="btn btn-success" routerLink="Ajouter">Ajouter Chambre</button>
+             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+            <!-- Search Section -->
+            <div class="my-3">
+              <h1>Recherche multicritère</h1>
+              <div class="search-hero">
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Rechercher Chambre">
+                <h6>Liste des chambres</h6>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table Section -->
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-vcenter table-mobile-md card-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>ID Chambre</th>
+                    <th>Numéro Chambre</th>
+                    <th>Type Chambre</th>
+                    <th>Bloc</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="chambres">
+                  <tr *ngFor="let c of chambres | filter:searchText| paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              let i = index"
+              appMadirective>
+                    <td class="pl-2"><i class="fas fa-bed fa-2x"></i></td>
+                    <td class="pl-2">{{ c.idChambre }}</td>
+                    <td class="pl-2">{{ c.numeroChambre }}</td>
+                    <td class="pl-2">{{ c.typeChambre }}</td>
+                    <td class="pl-2">{{ c.bloc?.nomBloc }}</td>
+                    <td class="col">
+                      
+                      <a class="btn text-warning" title="Modifier" (click)="SaveStorage(c.bloc)" [routerLink]="['/admin/chambre/Modifier', c.idChambre, c.numeroChambre, c.typeChambre]">
+                        <span class="material-icons"> edit </span>
+            
+                      </a>
+                      <a class="btn text-danger" title="Supprimer" (click)="deleteChambre(c.idChambre)">
+                        <span class="material-icons"> delete </span>
+                      </a>
+                      <button class="btn text-danger" title="View" (click)="openBlocShowForm(c.bloc)">
+                        <span class="material-icons">visibility</span> View
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+                <p>Nombre de chambres : {{ nombreChambres }}</p>
+
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination-container d-flex justify-content-start">
+    <pagination-controls
+      previousLabel="Previous"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+      class="mat-paginator my-custom-pagination"
+      style="color: black"
+    ></pagination-controls>
+  </div>
+</div>

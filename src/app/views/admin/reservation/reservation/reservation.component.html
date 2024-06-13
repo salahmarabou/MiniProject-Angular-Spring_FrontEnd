@@ -1,0 +1,72 @@
+<div class="mt-5">
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <h1 class="col-10">Liste des Réservation</h1>
+              <a routerLink="Ajouter" class="col-1 btn btn-success">Ajouter </a>
+              <a routerLink="Filtrer" class="col-1 btn btn-info">Filtrer </a>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table
+                class="table table-vcenter table-mobile-md card-table"
+                border="1"
+              >
+                <thead>
+                  <tr>
+                    <th>Id Réservation</th>
+                    <th>Annee Réservation</th>
+                    <th>Est Valide</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>12333</td>
+                    <td>Esprit</td>
+                    <td>
+                      <span class="badge badge-sm bg-gradient-success">
+                        oui
+                      </span>
+                    </td>
+                    <td class="col">
+                      <a class="btn text-danger">
+                        <span class="material-icons"> close </span></a
+                      ><a class="btn text-success">
+                        <span class="material-icons"> done </span></a
+                      ><a class="btn text-danger">
+                        <span class="material-icons"> archive </span></a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>12333</td>
+                    <td>Esprit</td>
+                    <td>
+                      <span class="badge badge-sm bg-gradient-danger">
+                        nonn
+                      </span>
+                    </td>
+                    <td class="col">
+                      <a class="btn text-danger">
+                        <span class="material-icons"> close </span></a
+                      ><a class="btn text-success">
+                        <span class="material-icons"> done </span></a
+                      ><a class="btn text-danger">
+                        <span class="material-icons"> archive </span></a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
